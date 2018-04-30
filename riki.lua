@@ -30,6 +30,9 @@ function rikiMartini.OnUpdate()
 		local medallion = NPC.GetItem(myHero, "item_medallion_of_courage", true)
 		local solarCrest = NPC.GetItem(myHero, "item_solar_crest", true)
 		local aghanimScepter = NPC.GetItem(myHero, "item_ultimate_scepter", true)
+		local orchid = NPC.GetItem(myHero, "item_orchid", true)
+		local bloodthorn = NPC.GetItem(myHero, "item_bloodthorn", true)
+		
 		local forceStaff = NPC.GetItem(myHero, "item_force_staff", true)
 		local hurricanePike = NPC.GetItem(myHero, "item_hurricane_pike", true)
 		local eul = NPC.GetItem(myHero, "item_cyclone", true)
@@ -54,6 +57,14 @@ function rikiMartini.OnUpdate()
 				Ability.CastTarget(diffusal, enemyTarget) 
 			return end
 			
+			if orchid and Ability.IsReady(orchid) and Ability.IsCastable(orchid, myMana) then
+				Ability.CastTarget(orchid, enemyTarget) 
+			return end
+		
+			if bloodthorn and Ability.IsReady(bloodthorn) and Ability.IsCastable(bloodthorn, myMana) then
+				Ability.CastTarget(bloodthorn, enemyTarget) 
+			return end
+			
 			return 
 		end
 		
@@ -76,6 +87,14 @@ function rikiMartini.OnUpdate()
 		
 		if solarCrest and Ability.IsReady(solarCrest) and Ability.IsCastable(solarCrest, myMana) then
 			Ability.CastTarget(solarCrest, enemyTarget) 
+		return end
+		
+		if orchid and Ability.IsReady(orchid) and Ability.IsCastable(orchid, myMana) then
+			Ability.CastTarget(orchid, enemyTarget) 
+		return end
+		
+		if bloodthorn and Ability.IsReady(bloodthorn) and Ability.IsCastable(bloodthorn, myMana) then
+			Ability.CastTarget(bloodthorn, enemyTarget) 
 		return end
 		
 		if nullifier and Ability.IsReady(nullifier) and Ability.IsCastable(nullifier, myMana) then
