@@ -40,7 +40,7 @@ function rikiMartini.OnUpdate()
 		local myMana = NPC.GetMana(myHero)
 		local enemyTarget = Input.GetNearestHeroToCursor(Entity.GetTeamNum(myHero), Enum.TeamType.TEAM_ENEMY)
 		
-		if NPC.IsLinkensProtected(enemyTarget) then
+		if enemyTarget and NPC.IsLinkensProtected(enemyTarget) then
 			if forceStaff and Ability.IsReady(forceStaff) and Ability.IsCastable(forceStaff, myMana) then
 				Ability.CastTarget(forceStaff, enemyTarget) 
 			return end
@@ -68,40 +68,40 @@ function rikiMartini.OnUpdate()
 			return 
 		end
 		
-		if blinkStrike and Ability.IsReady(blinkStrike) and Ability.IsCastable(blinkStrike, myMana) then 
+		if enemyTarget and blinkStrike and Ability.IsReady(blinkStrike) and Ability.IsCastable(blinkStrike, myMana) then 
 			Ability.CastTarget(blinkStrike, enemyTarget) 
 		return end
 		
-		if diffusal and Ability.IsReady(diffusal) and Ability.IsCastable(diffusal, myMana) then
+		if enemyTarget and diffusal and Ability.IsReady(diffusal) and Ability.IsCastable(diffusal, myMana) then
 			Ability.CastTarget(diffusal, enemyTarget) 
 		return end
 		
-		if smokeScreen and Ability.IsReady(smokeScreen) and Ability.IsCastable(smokeScreen, myMana) then
+		if enemyTarget and smokeScreen and Ability.IsReady(smokeScreen) and Ability.IsCastable(smokeScreen, myMana) then
 			local enemyAbsOrigin = Entity.GetAbsOrigin(enemyTarget)
 			Ability.CastPosition(smokeScreen, enemyAbsOrigin)
 		return end
 		
-		if medallion and Ability.IsReady(medallion) and Ability.IsCastable(medallion, myMana) then
+		if enemyTarget and medallion and Ability.IsReady(medallion) and Ability.IsCastable(medallion, myMana) then
 			Ability.CastTarget(medallion, enemyTarget) 
 		return end
 		
-		if solarCrest and Ability.IsReady(solarCrest) and Ability.IsCastable(solarCrest, myMana) then
+		if enemyTarget and solarCrest and Ability.IsReady(solarCrest) and Ability.IsCastable(solarCrest, myMana) then
 			Ability.CastTarget(solarCrest, enemyTarget) 
 		return end
 		
-		if orchid and Ability.IsReady(orchid) and Ability.IsCastable(orchid, myMana) then
+		if enemyTarget and orchid and Ability.IsReady(orchid) and Ability.IsCastable(orchid, myMana) then
 			Ability.CastTarget(orchid, enemyTarget) 
 		return end
 		
-		if bloodthorn and Ability.IsReady(bloodthorn) and Ability.IsCastable(bloodthorn, myMana) then
+		if enemyTarget and bloodthorn and Ability.IsReady(bloodthorn) and Ability.IsCastable(bloodthorn, myMana) then
 			Ability.CastTarget(bloodthorn, enemyTarget) 
 		return end
 		
-		if nullifier and Ability.IsReady(nullifier) and Ability.IsCastable(nullifier, myMana) then
+		if enemyTarget and nullifier and Ability.IsReady(nullifier) and Ability.IsCastable(nullifier, myMana) then
 			Ability.CastTarget(nullifier, enemyTarget) 
 		return end
 		
-		if rikiUltimate and Ability.IsReady(rikiUltimate) and Ability.IsCastable(rikiUltimate, myMana) then
+		if enemyTarget and rikiUltimate and Ability.IsReady(rikiUltimate) and Ability.IsCastable(rikiUltimate, myMana) then
 			if aghanimScepter then
 				Ability.CastTarget(rikiUltimate, myHero)
 			else
