@@ -32,6 +32,7 @@ function rikiMartini.OnUpdate()
 		local aghanimScepter = NPC.GetItem(myHero, "item_ultimate_scepter", true)
 		local orchid = NPC.GetItem(myHero, "item_orchid", true)
 		local bloodthorn = NPC.GetItem(myHero, "item_bloodthorn", true)
+		local abyssalblade = NPC.GetItem(myHero, "item_abyssal_blade", true)
 		
 		local forceStaff = NPC.GetItem(myHero, "item_force_staff", true)
 		local hurricanePike = NPC.GetItem(myHero, "item_hurricane_pike", true)
@@ -39,6 +40,16 @@ function rikiMartini.OnUpdate()
 		
 		local myMana = NPC.GetMana(myHero)
 		local enemyTarget = Input.GetNearestHeroToCursor(Entity.GetTeamNum(myHero), Enum.TeamType.TEAM_ENEMY)
+		
+		if enemyTarget and NPC.HasModifier(enemyTarget, "modifier_item_ultimate_scepter") and Ability.IsReady(NPC.GetAbility(enemyTarget, "antimage_spell_shield")) then
+			
+
+			if diffusal and Ability.IsReady(diffusal) and Ability.IsCastable(diffusal, myMana) then
+				Ability.CastTarget(diffusal, enemyTarget) 
+			return end
+			
+			return 
+		end
 		
 		if enemyTarget and NPC.IsLinkensProtected(enemyTarget) then
 			if forceStaff and Ability.IsReady(forceStaff) and Ability.IsCastable(forceStaff, myMana) then
@@ -57,6 +68,10 @@ function rikiMartini.OnUpdate()
 				Ability.CastTarget(diffusal, enemyTarget) 
 			return end
 			
+			if abyssalblade and Ability.IsReady(abyssalblade) and Ability.IsCastable(abyssalblade, myMana) then
+				Ability.CastTarget(abyssalblade, enemyTarget) 
+			return end
+			
 			if orchid and Ability.IsReady(orchid) and Ability.IsCastable(orchid, myMana) then
 				Ability.CastTarget(orchid, enemyTarget) 
 			return end
@@ -70,6 +85,10 @@ function rikiMartini.OnUpdate()
 		
 		if enemyTarget and blinkStrike and Ability.IsReady(blinkStrike) and Ability.IsCastable(blinkStrike, myMana) then 
 			Ability.CastTarget(blinkStrike, enemyTarget) 
+		return end
+		
+		if enemyTarget and abyssalblade and Ability.IsReady(abyssalblade) and Ability.IsCastable(abyssalblade, myMana) then
+			Ability.CastTarget(abyssalblade, enemyTarget) 
 		return end
 		
 		if enemyTarget and diffusal and Ability.IsReady(diffusal) and Ability.IsCastable(diffusal, myMana) then
